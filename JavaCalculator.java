@@ -34,6 +34,70 @@ public class JavaCalculator {
                 TextFieldRezultat.setText(Operatii.adunare(p, q).toString());
             }
         });
+
+        SubButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Polinom p = new Polinom();
+                Polinom q = new Polinom();
+                p.getPolinom().put(3, 6.0);
+                p.getPolinom().put(2, 3.0);
+                q.getPolinom().put(1, 3.0);
+                q.getPolinom().put(3, 6.0);
+
+                textFieldPol1.setText(p.toString());
+                textFieldPol2.setText(q.toString());
+                TextFieldRezultat.setText(Operatii.scadere(p, q).toString());
+            }
+        });
+
+        MulButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Polinom p = new Polinom();
+                Polinom q = new Polinom();
+                p.getPolinom().put(3, 6.0);
+                p.getPolinom().put(2, 3.0);
+                q.getPolinom().put(1, 3.0);
+                q.getPolinom().put(3, 6.0);
+
+                textFieldPol1.setText(p.toString());
+                textFieldPol2.setText(q.toString());
+                TextFieldRezultat.setText(Operatii.inmultire(p, q).toString());
+            }
+        });
+
+        DerButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Polinom p = new Polinom();
+                Polinom q = new Polinom();
+                p.getPolinom().put(3, 6.0);
+                p.getPolinom().put(2, 3.0);
+                q.getPolinom().put(1, 3.0);
+                q.getPolinom().put(3, 6.0);
+
+                textFieldPol1.setText(p.toString());
+                textFieldPol2.setText(q.toString());
+                TextFieldRezultat.setText(Operatii.dervivare(p).toString());
+            }
+        });
+
+        IntButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Polinom p = new Polinom();
+                Polinom q = new Polinom();
+                p.getPolinom().put(3, 6.0);
+                p.getPolinom().put(2, 3.0);
+                q.getPolinom().put(1, 3.0);
+                q.getPolinom().put(3, 6.0);
+
+                textFieldPol1.setText(p.toString());
+                textFieldPol2.setText(q.toString());
+                TextFieldRezultat.setText(Operatii.integrare(p).toString());
+            }
+        });
     }
 
     public static void main(String[] args) {
