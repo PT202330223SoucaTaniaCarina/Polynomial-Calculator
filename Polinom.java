@@ -1,31 +1,67 @@
 import java.util.TreeMap;
+import java.util.*;
 
 public class Polinom {
-    private Float putere;
-    private Float coeficient;
 
-    //TreeMap<Float, Float> polinom = new TreeMap<putere, coeficient>();
+     private HashMap<Integer, Double> polinom;
 
-    private Polinom(Float putere, Float coeficient){
-        this.putere = putere;
-        this.coeficient = coeficient;
+    public HashMap<Integer, Double> getPolinom() {
+        return polinom;
     }
 
-
-    public Float getPutere() {
-        return putere;
+    public void setPolinom(HashMap<Integer, Double> polinom) {
+        this.polinom = polinom;
     }
 
-    public void setPutere(Float putere) {
-        this.putere = putere;
+    public Polinom(){
+        super();
+        this.polinom = new HashMap<Integer, Double>();
     }
 
-    public Float getCoeficient() {
-        return coeficient;
-    }
-
-    public void setCoeficient(Float coeficient) {
-        this.coeficient = coeficient;
-    }
-
+    @Override
+    public String toString() {
+        String m = new String();
+        for(Map.Entry<Integer, Double> entry: this.getPolinom().entrySet()) {
+            if (entry.getValue() != 0) {
+                if (entry.getKey() == 0) {
+                    if (entry.getValue() < 0)
+                        m += entry.getValue();
+                    else
+                        m += "+" + entry.getValue();
+                } else {
+                    if (entry.getKey() == 1) {
+                        if (entry.getValue() == 1) {
+                            m += "+x";
+                        } else {
+                            if (entry.getValue() == -1)
+                                m += "-x";
+                            else {
+                                if (entry.getValue() < 0)
+                                    m += entry.getValue() + "x";
+                                else
+                                    m += "+" + entry.getValue() + "x";
+                            }
+                        }
+                    } else {
+                        if (entry.getValue() == 1) {
+                            m += "+x^" + entry.getKey();
+                        } else {
+                            if (entry.getValue() == -1) {
+                                m += "-x^" + entry.getKey();
+                            } else {
+                                if (entry.getValue() < 0)
+                                    m += entry.getValue() + "x^" + entry.getKey();
+                                else
+                                    m += "+" + entry.getValue() + "x^" + entry.getKey();
+                            }
+                        }
+                    }
+                }
+            }
+        }
+            return m;
+        }
+    
+    
+    
 }
