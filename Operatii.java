@@ -22,13 +22,13 @@ public class Operatii {
         rez.setPolinom((HashMap<Integer, Double>) p.getPolinom().clone());
         for(Map.Entry<Integer, Double> entry: q.getPolinom().entrySet()){
             if(rez.getPolinom().containsKey(entry.getKey())){
-                if(Math.abs(rez.getPolinom().get(entry.getKey())- entry.getValue())<0.0001)
+                if(Math.abs(rez.getPolinom().get(entry.getKey()) - entry.getValue())<0.0001)
                     rez.getPolinom().remove(entry.getKey());
                 else
-                    rez.getPolinom().put(entry.getKey(),rez.getPolinom().get(entry.getKey())- entry.getValue());
+                    rez.getPolinom().put(entry.getKey(),rez.getPolinom().get(entry.getKey()) - entry.getValue());
             }
             else{
-                rez.getPolinom().put(entry.getKey(), entry.getValue());
+                rez.getPolinom().put(entry.getKey(), -entry.getValue());
             }
         }
         return rez;
