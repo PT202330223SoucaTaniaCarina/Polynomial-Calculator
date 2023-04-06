@@ -7,17 +7,23 @@ public class Operatii {
         Polinom rez = new Polinom();
         rez.setPolinom((HashMap<Integer, Double>) p.getPolinom().clone());
         for(Map.Entry<Integer, Double> entry: q.getPolinom().entrySet()){
+//            if(entry.getKey() == 0){
+//                rez.getPolinom().put(entry.getKey(), entry.getValue() + rez.getPolinom().get(entry.getKey()));
+//                //rez.getPolinom().put(entry.getKey(), entry.getValue()-2);
+//            }
             if(rez.getPolinom().containsKey(entry.getKey())){
-                rez.getPolinom().put(entry.getKey(), entry.getValue() + rez.getPolinom().get(entry.getKey()));
+                rez.getPolinom().put(entry.getKey(), rez.getPolinom().get(entry.getKey()) + entry.getValue());
             }
             else{
                 rez.getPolinom().put(entry.getKey(), entry.getValue());
             }
         }
         return rez;
+
     }
 
     public static Polinom scadere(Polinom p, Polinom q){
+
         Polinom rez = new Polinom();
         rez.setPolinom((HashMap<Integer, Double>) p.getPolinom().clone());
         for(Map.Entry<Integer, Double> entry: q.getPolinom().entrySet()){

@@ -1,9 +1,7 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.HashMap;
 
 public class JavaCalculator {
     private JPanel JavaCalculator;
@@ -19,114 +17,83 @@ public class JavaCalculator {
     private JButton DivButton;
     private JButton DerButton;
     private JButton IntButton;
-    Polinom p = new Polinom();
-    Polinom q = new Polinom();
 
-    void Polinom (Polinom p, Polinom q){
-        p.getPolinom().put(3, 6.0);
-        p.getPolinom().put(2, 3.0);
-        q.getPolinom().put(1, 3.0);
-        q.getPolinom().put(3, 6.0);
-        String pol1 = textFieldPol1.getText();
-        String pol2 = textFieldPol2.getText();
-
-//        Polinom newPolinom = new Polinom();
-//        Pattern pattern = Pattern.compile("\\d");
-//        Matcher matcher = pattern.matcher(pol1);
-//        for(Map.Entry<Integer, Double> entry: this.getPolinom().entrySet()) {
-//            int count = 0;
-//            while (matcher.find()) {
-//                if (count % 2 == 0) {
-//                    newPolinom.entry.getKey() = Integer.(matcher.group());
-//                }
-//                else {
-//                    newPolinom.entry.getValue() = Integer.(matcher.group());
-//                }
-//                count++;
-//            }
-//        }
-//
-//        Polinom newPolinom2 = new Polinom();
-//        Matcher matcher2 = pattern.matcher(pol2);
-//        for(Map.Entry<Integer, Double> entry: this.getPolinom().entrySet()) {
-//            int count = 0;
-//            while (matcher2.find()) {
-//                if (count % 2 == 0) {
-//                    newPolinom2.entry.getKey() = Integer.(matcher2.group());
-//                }
-//                else {
-//                    newPolinom2.entry.getValue() = Integer.(matcher2.group());
-//                }
-//                count++;
-//            }
-//        }
-
-    }
-
-    public JavaCalculator() {
+//deriv, scadere
+    public JavaCalculator() {  //+4x^5-3x^4+1x^2-8x^1+1x^0
+                               //+3x^4-1x^3+1x^2+2x^1-1x^0
         AddButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Polinom(p, q);
+                String pol1 = textFieldPol1.getText();
+                String pol2 = textFieldPol2.getText();
 
-                textFieldPol1.setText(p.toString());
-                textFieldPol2.setText(q.toString());
-                TextFieldRezultat.setText(Operatii.adunare(p, q).toString());
+                  Polinom p1 = new Polinom(pol1);
+                  Polinom p2 = new Polinom(pol2);
+
+                  textFieldPol1.setText(p1.toString());
+                  textFieldPol2.setText(p2.toString());
+                  TextFieldRezultat.setText(Operatii.adunare(p1, p2).toString());
             }
         });
 
-        SubButton.addActionListener(new ActionListener() {
+        SubButton.addActionListener(new ActionListener() {  //+4x^5-3x^4+1x^2-8x^1+1x^0
+                                                            //+3x^4-1x^3+1x^2+2x^1-1x^0
             @Override
             public void actionPerformed(ActionEvent e) {
-                Polinom(p, q);
+                String pol1 = textFieldPol1.getText();
+                String pol2 = textFieldPol2.getText();
 
-                textFieldPol1.setText(p.toString());
-                textFieldPol2.setText(q.toString());
-                TextFieldRezultat.setText(Operatii.scadere(p, q).toString());
+                Polinom p1C = new Polinom(pol1);
+                Polinom p2C = new Polinom(pol2);
+
+                textFieldPol1.setText(p1C.toString());
+                textFieldPol2.setText(p2C.toString());
+                TextFieldRezultat.setText(Operatii.scadere(p1C, p2C).toString());
             }
         });
 
-        MulButton.addActionListener(new ActionListener() {
+        MulButton.addActionListener(new ActionListener() { // 3x^2-x^1+1x^0
+                                                            // 1x^1-2x^0
             @Override
             public void actionPerformed(ActionEvent e) {
-                Polinom(p, q);
+                String pol1 = textFieldPol1.getText();
+                String pol2 = textFieldPol2.getText();
 
-                textFieldPol1.setText(p.toString());
-                textFieldPol2.setText(q.toString());
-                TextFieldRezultat.setText(Operatii.inmultire(p, q).toString());
+                Polinom p1C = new Polinom(pol1);
+                Polinom p2C = new Polinom(pol2);
+
+                textFieldPol1.setText(p1C.toString());
+                textFieldPol2.setText(p2C.toString());
+                TextFieldRezultat.setText(Operatii.inmultire(p1C, p2C).toString());
             }
         });
 
-        DerButton.addActionListener(new ActionListener() {
+        DerButton.addActionListener(new ActionListener() { // 1x^3-2x^2+6x^1-5
             @Override
             public void actionPerformed(ActionEvent e) {
-                Polinom(p, q);
+                String pol1 = textFieldPol1.getText();
 
-                textFieldPol1.setText(p.toString());
-                textFieldPol2.setText(q.toString());
-                TextFieldRezultat.setText(Operatii.dervivare(p).toString());
+                Polinom p1C = new Polinom(pol1);
+
+                textFieldPol1.setText(p1C.toString());
+
+                TextFieldRezultat.setText(Operatii.dervivare(p1C).toString());
             }
         });
 
-        IntButton.addActionListener(new ActionListener() {
+        IntButton.addActionListener(new ActionListener() {  // x^3+4.0x^2+5.0
             @Override
             public void actionPerformed(ActionEvent e) {
-                Polinom(p, q);
+                String pol1 = textFieldPol1.getText();
 
-                textFieldPol1.setText(p.toString());
-                textFieldPol2.setText(q.toString());
-                TextFieldRezultat.setText(Operatii.integrare(p).toString());
-               // String pol1 = textFieldPol1.getText();
-               // test.setText(pol1);
+                Polinom p1C = new Polinom(pol1);
+
+                textFieldPol1.setText(p1C.toString());
+
+                TextFieldRezultat.setText(Operatii.integrare(p1C).toString());
             }
         });
-//        textFieldPol1.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                String pol1 = textFieldPol1.getText();
-//
-//            }
-//        });
+
 
     }
 
